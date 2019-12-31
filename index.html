@@ -1,49 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
     <title>Psychic Game</title>
+
+    <link rel="stylesheet" type="text/css" href="assets\css\style.css">
+
 </head>
+
 <body>
-    <div id=“game”>
+
+    <script src="main.js" async></script>
+
+    <div class="container">
+
+      <img src="assets\images\cloudQuestion.jpg" alt="sky background of a question-mark shaped cloud" width="475" height="250">
+      
         <h1>THE PSYCHIC GAME</h1>
-        <h2>Guess Number I Am Thinking of</h2>
-        <h2 id=“wins”>0</h2>
-        <h2 id=“losses”>0</h2>
-        <h2 id=“guessesleft”>9</h2>
-        <h2 id=“lettersGuessed”></h2>
+        <h2>Guess What Number I am Thinking</h2>
+        <br>
+        <p>Your Wins: <span id="wins"></span></p>
+        <p>Your Losses: <span id="losses"></span></p>
+        <p>Guesses Remaining: <span id="guessesleft"></span></p>
+        <p>Letters Guessed: <span id="lettersGuessed"></span></p>
+       
     </div>
-    <script type=“text/javascript”>
-        // var letters = [“A”, “B”, “C”, “D”, “E”, “F”, “G”, “H”, “I”, “J”, “K”, “L”, “M”, “N”, “O”, “P”, “Q”, “R”, “S”, “T”, “U”, “V”, “W”, “X”, “Y”, “Z”];
+
+    <script>
+        
         var wins = 0;
         var losses = 0;
-        var guessesleft = 9;
-        var computerGuess = “”;
+        var guessesLeft = 9;
+        var userGuess = "";
+        var computerGuess = "";
         var lettersGuessed = [];
-        function randomLetter() {
-            computerGuess = letters[Math.floor(Math.random() * letters.length)];
+        var resetGame;
+
+        function computerGuess() {
+           var computerGuess = letters[Math.floor(Math.random() * letters.length)];
         }
-        function updatelettersGuessed() {
-            document.querySelector(“#lettersGuessed”).innerHTML = lettersGuessed.join(“, “);
-        }
-        function resetGame() {
-        }
-        document.onkeyup = function (event) {
+
+        document.onkeyup = function(event) {
             var userGuess = event.key;
-            //if (userGuess === computerGuess) {
-            //}
+                updatelettersGuessed(userGuess);
+        }
+
+        function userGuess() {
+            userGuess = document.getElementById("userGuess").textContent 
+
+             if (userGuess === computerGuess ) {
+                lettersGuessed.push(userGuess);
+                alert("Congratulations! You've won that one!");
+                wins = wins + 1;
+                showWins();
+             }
+
+             else alert("That is not a letter -___-");
+
+             else if (guessesLeft === 0) {
+                 alert("Bloop! Out of Guesses! I'll reset the game.")
+             }
+        
+
+        function updatelettersGuessed() {
+            document.querySelector("#lettersGuessed").innerHTML = lettersGuessed.join(", ");
+        }
+        
+        function resetGame() {
+            document.querySelectorAll(resetGame).html = resetGame();
+        }
+        
+          
             // else it will 9 trials minus the input then sent to variable guessesleft
             //  then user inputs again
             // when guesess left is equal to zero then add to losses
-            //  both needs to be in for loops
+            
             // if guess is equal to  computer.
-            lettersGuessed.push(userGuess)
+            
+            
+            
+            
             console.log(userGuess)
             console.log(lettersGuessed)
-            updatelettersGuessed();
+            console.log(computerGuess)
+            
         }
+        
     </script>
 </body>
 </html>
