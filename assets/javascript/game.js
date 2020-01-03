@@ -10,12 +10,14 @@ var computerGuess = "";
 var lettersGuessed = "";
 var resetGame;
 
+//defining the function for computer guesses
 function computerGuess() {
 var letter = letters[Math.floor(Math.random() * letters.length) * 26];
 }
 
+//listing all letters guessed under lettersGuessed
 function updatelettersGuessed() {
-document.querySelector("#lettersGuessed").innerHTML = lettersGuessed.join(", ");
+document.querySelector("guessesLeft").innerHTML = lettersGuessed.join(", ");
 }
 
 //user's guess 
