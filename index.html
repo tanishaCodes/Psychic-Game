@@ -13,8 +13,6 @@
 
 <body>
 
-    <script src="main.js" async></script>
-
     <div class="container">
 
       <img src="assets\images\cloudQuestion.jpg" alt="sky background of a question-mark shaped cloud" width="475" height="250">
@@ -29,67 +27,8 @@
        
     </div>
 
-    <script>
-        
-        var wins = 0;
-        var losses = 0;
-        var guessesLeft = 9;
-        var userGuess = "";
-        var computerGuess = "";
-        var lettersGuessed = [];
-        var resetGame;
-
-        function computerGuess() {
-           var computerGuess = letters[Math.floor(Math.random() * letters.length)];
-        }
-
-        document.onkeyup = function(event) {
-            var userGuess = event.key;
-                updatelettersGuessed(userGuess);
-        }
-
-        function userGuess() {
-            userGuess = document.getElementById("userGuess").textContent 
-
-             if (userGuess === computerGuess ) {
-                lettersGuessed.push(userGuess);
-                alert("Congratulations! You've won that one!");
-                wins = wins + 1;
-                showWins();
-             }
-
-             else alert("That is not a letter -___-");
-
-             else if (guessesLeft === 0) {
-                 alert("Bloop! Out of Guesses! I'll reset the game.")
-             }
-        
-
-        function updatelettersGuessed() {
-            document.querySelector("#lettersGuessed").innerHTML = lettersGuessed.join(", ");
-        }
-        
-        function resetGame() {
-            document.querySelectorAll(resetGame).html = resetGame();
-        }
-        
-          
-            // else it will 9 trials minus the input then sent to variable guessesleft
-            //  then user inputs again
-            // when guesess left is equal to zero then add to losses
-            
-            // if guess is equal to  computer.
-            
-            
-            
-            
-            console.log(userGuess)
-            console.log(lettersGuessed)
-            console.log(computerGuess)
-            
-        }
-        
-    </script>
+    <script type="text/javascript" src= "assets\javascript\game.js"></script>
+    
 </body>
 </html>
 
